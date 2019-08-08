@@ -9,7 +9,10 @@ import (
 type BookUsecase struct{}
 
 func (bu BookUsecase) GetAll() ([]*model.Book, error) {
-	books, err := brep.BookRepository(preb.BookPersistence{}).GetAll()
+	var books []*model.Book
+	var err error
+
+	books, err = brep.BookRepository(preb.BookPersistence{}).GetAll()
 
 	if err != nil {
 		return nil, err
