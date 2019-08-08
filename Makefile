@@ -1,8 +1,9 @@
 
 GO_CMD = go
 VARSION = -u
+TEST_DIR = ./test/...
 
-all: tools clean fmt build
+all: tools clean fmt tests build
 
 tools:
 	$(GO_CMD) get $(VARSION) github.com/google/wire/cmd/wire
@@ -15,6 +16,9 @@ build:
 
 fmt:
 	$(GO_CMD) fmt ./...
+
+tests:
+	$(GO_CMD) test -v $(TEST_DIR)
 
 clean:
 	rm -rf ./target
