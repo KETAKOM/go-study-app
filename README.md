@@ -1,4 +1,4 @@
-# go-sample-todo
+# go-study-app
 
 参考サイト：
 https://yyh-gl.github.io/tech-blog/blog/go_web_api/

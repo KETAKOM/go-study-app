@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/KETAKOM/go-sample-todo/application/handler"
+	"github.com/KETAKOM/go-study-app/application/handler"
 	"github.com/julienschmidt/httprouter"
 )
 

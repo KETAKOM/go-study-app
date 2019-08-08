@@ -3,7 +3,7 @@ package persistence
 import (
 	"time"
 
-	"github.com/KETAKOM/go-sample-todo/application/domain/model"
+	"github.com/KETAKOM/go-study-app/application/domain/model"
 )
 
 type BookPersistence struct{}

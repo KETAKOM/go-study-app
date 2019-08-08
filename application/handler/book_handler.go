@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/KETAKOM/go-sample-todo/application/domain/model"
-	"github.com/KETAKOM/go-sample-todo/application/usecase"
+	"github.com/KETAKOM/go-study-app/application/domain/model"
+	"github.com/KETAKOM/go-study-app/application/usecase"
 	"github.com/julienschmidt/httprouter"
 )
 

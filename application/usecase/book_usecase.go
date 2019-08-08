@@ -1,9 +1,9 @@
 package usecase
 
 import (
-	"github.com/KETAKOM/go-sample-todo/application/domain/model"
-	brep "github.com/KETAKOM/go-sample-todo/application/domain/repository"
-	preb "github.com/KETAKOM/go-sample-todo/application/infra/persistence"
+	"github.com/KETAKOM/go-study-app/application/domain/model"
+	brep "github.com/KETAKOM/go-study-app/application/domain/repository"
+	preb "github.com/KETAKOM/go-study-app/application/infra/persistence"
 )
 
 type BookUsecase struct{}

@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	hand "github.com/KETAKOM/go-sample-todo/application/handler"
+	hand "github.com/KETAKOM/go-study-app/application/handler"
 )
 
 func main() {
