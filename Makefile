@@ -12,7 +12,7 @@ tools:
 build:
 	$(GO_CMD) build -o ./target/hello_world ./cmd/hello_world/main.go
 	$(GO_CMD) build -o ./target/todo ./cmd/todo/main.go
-	$(GO_CMD) build -o ./target/cmd/api/book ./cmd/api/book/main.go
+	$(GO_CMD) build -o ./target/cmd/api ./cmd/api/main.go
 
 fmt:
 	$(GO_CMD) fmt ./...
