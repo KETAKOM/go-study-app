@@ -11,7 +11,7 @@ import (
 
 // Injectors from injecter.go:
 
-func initializeBaz() (foobarbaz.Baz, error) {
+func InitializeBaz() (foobarbaz.Baz, error) {
 	foo := foobarbaz.ProvideFoo()
 	bar := foobarbaz.ProvideBar(foo)
 	baz, err := foobarbaz.ProvideBaz(bar)

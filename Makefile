@@ -14,9 +14,14 @@ build:
 	$(GO_CMD) build -o ./target/hello_world ./cmd/hello_world/main.go
 	$(GO_CMD) build -o ./target/todo ./cmd/todo/main.go
 	$(GO_CMD) build -o ./target/cmd/api ./cmd/api/main.go
+	$(GO_CMD) build -o ./target/test_wire ./cmd/test_wire/main.go
 
 fmt:
 	$(GO_CMD) fmt ./...
+
+wire:
+	rm -rf ./registory/wire_gen.go
+	wire gen ./registory/...
 
 tests:
 	$(GO_CMD) test -v $(TEST_DIR)
