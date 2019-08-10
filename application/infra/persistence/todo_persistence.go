@@ -41,3 +41,25 @@ func (todo TodoPersistence) GetList() ([]*model.Todo, error) {
 	}
 	return ts, nil
 }
+
+func (todo TodoPersistence) AddTodo(t *model.Todo) (bool, error) {
+	db, err := lib.NewDBConnection()
+	if err != nil {
+		return false, err
+	}
+	defer db.Close()
+
+	stmt, err := db.Prepare("insert into todo (title, detail, auther) values (?, ?, ?)")
+
+	if err != nil {
+		return false, err
+	}
+	defer stmt.Close()
+
+	_, err = stmt.Exec(&t.Title, &t.Detail, &t.Auther)
+
+	if err != nil {
+		return false, err
+	}
+	return true, nil
+}

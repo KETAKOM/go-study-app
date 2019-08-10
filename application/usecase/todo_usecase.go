@@ -18,3 +18,12 @@ func (todo TodoUsecase) GetList() ([]*model.Todo, error) {
 	}
 	return tl, nil
 }
+
+func (todo TodoUsecase) AddTodo(t *model.Todo) (bool, error) {
+	var err error
+	_, err = repository.TodoRepository(pre.TodoPersistence{}).AddTodo(t)
+	if err != nil {
+		return false, err
+	}
+	return true, nil
+}

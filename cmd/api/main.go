@@ -14,5 +14,6 @@ func main() {
 	router := httprouter.New()
 	router.GET("/", handler.BookIndex)
 	router.GET("/todo", handler.TodoIndex)
+	router.GET("/todo/add", handler.TodoAdd)
 	log.Fatal(http.ListenAndServe(":3000", router))
 }
