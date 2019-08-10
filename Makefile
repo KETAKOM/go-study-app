@@ -20,5 +20,14 @@ fmt:
 tests:
 	$(GO_CMD) test -v $(TEST_DIR)
 
+mock-db: #Starting the docker daemon
+	docker container run --rm -d \
+		-v $(PWD)/database/init:/docker-entrypoint-initdb.d \
+		-e MYSQL_ROOT_PASSWORD=root \
+		-p 43306:3306 --name mysql mysql:5.7
+
+mock-db-stop:
+	docker container stop mysql
+
 clean:
 	rm -rf ./target
