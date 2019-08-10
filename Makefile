@@ -8,6 +8,7 @@ all: tools clean fmt tests build
 tools:
 	$(GO_CMD) get $(VARSION) github.com/google/wire/cmd/wire
 	$(GO_CMD) get $(VARSION) github.com/julienschmidt/httprouter
+	$(GO_CMD) get $(VARSION) github.com/go-sql-driver/mysql
 
 build:
 	$(GO_CMD) build -o ./target/hello_world ./cmd/hello_world/main.go

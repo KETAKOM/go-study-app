@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/KETAKOM/go-study-app/application/domain/model"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 type TodoPersistence struct{}
