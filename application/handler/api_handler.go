@@ -44,3 +44,21 @@ func TodoIndex(w http.ResponseWriter, _ *http.Request, _ httprouter.Params) {
 	}
 
 }
+
+func TodoCreate(w http.ResponseWriter, _ *http.Request, _ httprouter.Params) {
+	var todoList []*model.Todo
+	var err error
+
+	todoList, err = usecase.TodoUsecase{}.GetList()
+	if err != nil {
+		http.Error(w, "Internal Server Error", 500)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	if err = json.NewEncoder(w).Encode(todoList); err != nil {
+		http.Error(w, "Internal Server Error", 500)
+		return
+	}
+
+}

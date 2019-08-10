@@ -4,23 +4,26 @@ import (
 	"database/sql"
 
 	"github.com/KETAKOM/go-study-app/application/domain/model"
+	"github.com/KETAKOM/go-study-app/application/lib"
 	_ "github.com/go-sql-driver/mysql"
 )
 
-type TodoPersistence struct{}
+type TodoPersistence struct {
+	Connect *sql.DB
+}
 
 func (todo TodoPersistence) GetList() ([]*model.Todo, error) {
 
-	db, err := sql.Open("mysql", "root:root@tcp(127.0.0.1:43306)/app1")
+	db, err := lib.NewDBConnection()
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 	defer db.Close()
 
 	rows, err := db.Query("select id, title, detail, auther from todo")
 
 	if err != nil {
-		panic(err.Error())
+		return nil, err
 	}
 	defer rows.Close()
 
@@ -32,7 +35,7 @@ func (todo TodoPersistence) GetList() ([]*model.Todo, error) {
 		t := model.Todo{}
 		err := rows.Scan(&t.Id, &t.Title, &t.Detail, &t.Auther)
 		if err != nil {
-			panic(err.Error())
+			return nil, err
 		}
 		ts = append(ts, &t)
 	}
