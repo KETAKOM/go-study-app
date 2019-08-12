@@ -24,3 +24,12 @@ https://qiita.com/taizo/items/56f8639260eb2a0fa999
 ``` // +build wireinject ``` 
 の次は一行、改行が必要。
 
+## circleCI
+
+### ローカルでconfigの文法チェックをする方法
+(1)  下記のコマンドでCircleCI CLIをインストールする  
+```$ curl -fLSs https://circle.ci/cli | bash```  
+(2)```.circleci/cinfig.yml```が用意されている前提で  
+```$ circleci config validate``` コマンドでチェックできる。  
+  
+参考URL:https://fuqda.hatenablog.com/entry/2018/12/29/235904

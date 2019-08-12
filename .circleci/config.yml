@@ -1,0 +1,18 @@
+# Golang CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-go/ for more details
+version: 2
+jobs:
+  build:
+    environment:
+      - GOPATH: /home/circleci/go
+    docker:
+      - image: circleci/golang:1.12.7
+    working_directory: /home/circleci/go/src/github.com/KETAKOM/go-study-app
+    steps:
+      - run: echo 'export PATH=${GOPATH}/bin/:${PATH}' >> $BASH_ENV
+      - checkout
+
+      # # specify any bash command here prefixed with `run: `
+      # - run: go get -v -t -d ./...
+      - run: make
