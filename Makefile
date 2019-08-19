@@ -11,6 +11,8 @@ tools:
 	$(GO_CMD) get $(VARSION) github.com/go-sql-driver/mysql
 	$(GO_CMD) get $(VARSION) github.com/aws/aws-sdk-go
 	$(GO_CMD) get $(VARSION) github.com/aws/aws-sdk-go/service/sqs
+	$(GO_CMD) get $(VARSION) github.com/golang/protobuf/proto
+	$(GO_CMD) get $(VARSION) google.golang.org/grpc
 
 build:
 	$(GO_CMD) build -o ./target/hello_world ./cmd/hello_world/main.go

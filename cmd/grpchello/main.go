@@ -3,8 +3,9 @@ package main
 import (
 	"log"
 	"net"
-	"sample/api/hello"
-	"sample/application/service"
+
+	"github.com/KETAKOM/go-study-app/api/hello"
+	"github.com/KETAKOM/go-study-app/application/service"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"

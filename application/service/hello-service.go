@@ -2,7 +2,8 @@ package service
 
 import (
 	"context"
-	pb "sample/api/hello"
+
+	pb "github.com/KETAKOM/go-study-app/api/hello"
 )
 
 type HelloService struct {
