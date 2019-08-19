@@ -16,6 +16,7 @@ build:
 	$(GO_CMD) build -o ./target/hello_world ./cmd/hello_world/main.go
 	$(GO_CMD) build -o ./target/todo ./cmd/todo/main.go
 	$(GO_CMD) build -o ./target/cmd/api ./cmd/api/main.go
+	$(GO_CMD) build -o ./target/cmd/grpchello ./cmd/grpchello/main.go
 	$(GO_CMD) build -o ./target/test_wire ./cmd/test_wire/main.go
 
 fmt:
