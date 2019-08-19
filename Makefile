@@ -9,6 +9,8 @@ tools:
 	$(GO_CMD) get $(VARSION) github.com/google/wire/cmd/wire
 	$(GO_CMD) get $(VARSION) github.com/julienschmidt/httprouter
 	$(GO_CMD) get $(VARSION) github.com/go-sql-driver/mysql
+	$(GO_CMD) get $(VARSION) github.com/aws/aws-sdk-go
+	$(GO_CMD) get $(VARSION) github.com/aws/aws-sdk-go/service/sqs
 
 build:
 	$(GO_CMD) build -o ./target/hello_world ./cmd/hello_world/main.go
