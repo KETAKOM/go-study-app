@@ -1,9 +1,8 @@
-module sample
+module github.com/KETAKOM/go-study-app
 
 go 1.12
 
 require (
-	github.com/KETAKOM/go-study-app v0.0.0-20190812194231-f0f1ca9fa37e
 	github.com/aws/aws-sdk-go v1.23.3
 	github.com/go-sql-driver/mysql v1.4.1
 	github.com/golang/protobuf v1.3.2
