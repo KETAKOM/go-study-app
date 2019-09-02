@@ -27,3 +27,12 @@ func (todo TodoUsecase) AddTodo(t *model.Todo) (bool, error) {
 	}
 	return true, nil
 }
+
+func (todo TodoUsecase) EditTodo(t *model.Todo) (bool, error) {
+	var err error
+	_, err = repository.TodoRepository(pre.TodoPersistence{}).UpsertTodo(t)
+	if err != nil {
+		return false, err
+	}
+	return true, nil
+}

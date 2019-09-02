@@ -24,7 +24,6 @@ func BookIndex(w http.ResponseWriter, _ *http.Request, _ httprouter.Params) {
 		http.Error(w, "Internal Server Error", 500)
 		return
 	}
-
 }
 
 func TodoIndex(w http.ResponseWriter, _ *http.Request, _ httprouter.Params) {
@@ -68,5 +67,35 @@ func TodoAdd(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		http.Error(w, err.Error(), 500)
 		return
 	}
+}
 
+func TodoEdit(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+
+	// var todo model.Todo
+	var result bool
+	var err error
+
+	// // TODO: validate
+	// params := r.URL.Query()
+	// todo.Id, err = strconv.Atoi(params["id"][0])
+	// if err != nil {
+	// 	http.Error(w, err.Error(), 500)
+	// 	return
+	// }
+	// todo.Title = params["title"][0]
+	// todo.Detail = params["detail"][0]
+	// todo.Auther = params["auther"][0]
+
+	// result, err = usecase.TodoUsecase{}.EditTodo(&todo)
+	// if err != nil {
+	// 	http.Error(w, err.Error(), 500)
+	// 	return
+	// }
+
+	result = true
+	w.Header().Set("Content-Type", "application/json")
+	if err = json.NewEncoder(w).Encode(result); err != nil {
+		http.Error(w, err.Error(), 500)
+		return
+	}
 }

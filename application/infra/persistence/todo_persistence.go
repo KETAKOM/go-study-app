@@ -63,3 +63,26 @@ func (todo TodoPersistence) AddTodo(t *model.Todo) (bool, error) {
 	}
 	return true, nil
 }
+
+func (todo TodoPersistence) UpsertTodo(t *model.Todo) (bool, error) {
+	// db, err := lib.NewDBConnection()
+	// if err != nil {
+	// 	return false, err
+	// }
+	// defer db.Close()
+
+	// stmt, err := db.Prepare("insert into todo (id, title, detail, auther) values (?, ?, ?, ?)" +
+	// 	"on duplicate key update title = ?, detail = ?, auther = ?")
+
+	// if err != nil {
+	// 	return false, err
+	// }
+	// defer stmt.Close()
+
+	// _, err = stmt.Exec(&t.Id, &t.Title, &t.Detail, &t.Auther)
+
+	// if err != nil {
+	// 	return false, err
+	// }
+	return true, nil
+}

@@ -3,7 +3,7 @@ package model
 import "time"
 
 type Todo struct {
-	Id        int64     `json:"id"`
+	Id        int       `json:"id"`
 	Title     string    `json:"title"`
 	Detail    string    `json:"detail"`
 	Auther    string    `json:"auther"`
