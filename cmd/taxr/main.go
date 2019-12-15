@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"github.com/KETAKOM/go-study-app/application/domain/taxr/sof"
 	"github.com/KETAKOM/go-study-app/application/domain/taxr/user"
 )
 
@@ -38,4 +39,20 @@ func main() {
 	}
 
 	fmt.Println("ok")
+
+	sof := sof.Sof{
+		10000000,
+		10000000,
+		1000000,
+		1000000,
+		600000,
+		0,
+	}
+	s, err := sof.CalIncome()
+	if err != nil {
+		fmt.Println("CalIncome failed")
+		return
+	}
+
+	fmt.Println(s.Income)
 }
