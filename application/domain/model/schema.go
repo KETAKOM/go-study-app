@@ -4,6 +4,10 @@ import (
 	"github.com/yokoe/herschel"
 )
 
+type Table struct {
+	Name string
+}
+
 type Schema struct {
 	ID           string
 	LogicalName  string

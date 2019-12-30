@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package gss;
+
+service Gss {
+    rpc GetSpreadSheet (GetSpreadSheetRequest) returns (GetSpreadSheetResponce);
+}
+
+message GetSpreadSheetRequest {
+}
+
+message GetSpreadSheetResponce {
+    string res = 1;
+
+    message Table {
+        string name = 1;
+    }
+
+    message Rows {
+        int32 rows = 1;
+    }
+
+    message Column {
+        string Id = 1;
+        string LogicalName = 2;
+        string PhysicalName = 3;
+        string Type = 4;
+        string NullAble = 5;
+        string PK = 7;
+        string Default = 8;
+    }
+
+    message Schema {
+        Table type = 1;
+        map<int32, Column> columns = 2;
+    }
+
+    Schema schema = 5;
+
+}
