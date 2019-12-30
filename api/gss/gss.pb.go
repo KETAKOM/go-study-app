@@ -6,11 +6,12 @@ package gss
 import (
 	context "context"
 	fmt "fmt"
+	math "math"
+
 	proto "github.com/golang/protobuf/proto"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
-	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -24,334 +25,103 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-type GetSpreadSheetRequest struct {
+type GetQueryBySpreadSheetRequest struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GetSpreadSheetRequest) Reset()         { *m = GetSpreadSheetRequest{} }
-func (m *GetSpreadSheetRequest) String() string { return proto.CompactTextString(m) }
-func (*GetSpreadSheetRequest) ProtoMessage()    {}
-func (*GetSpreadSheetRequest) Descriptor() ([]byte, []int) {
+func (m *GetQueryBySpreadSheetRequest) Reset()         { *m = GetQueryBySpreadSheetRequest{} }
+func (m *GetQueryBySpreadSheetRequest) String() string { return proto.CompactTextString(m) }
+func (*GetQueryBySpreadSheetRequest) ProtoMessage()    {}
+func (*GetQueryBySpreadSheetRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_30f83ece174e3468, []int{0}
 }
 
-func (m *GetSpreadSheetRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetSpreadSheetRequest.Unmarshal(m, b)
+func (m *GetQueryBySpreadSheetRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetQueryBySpreadSheetRequest.Unmarshal(m, b)
 }
-func (m *GetSpreadSheetRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetSpreadSheetRequest.Marshal(b, m, deterministic)
+func (m *GetQueryBySpreadSheetRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetQueryBySpreadSheetRequest.Marshal(b, m, deterministic)
 }
-func (m *GetSpreadSheetRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetSpreadSheetRequest.Merge(m, src)
+func (m *GetQueryBySpreadSheetRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetQueryBySpreadSheetRequest.Merge(m, src)
 }
-func (m *GetSpreadSheetRequest) XXX_Size() int {
-	return xxx_messageInfo_GetSpreadSheetRequest.Size(m)
+func (m *GetQueryBySpreadSheetRequest) XXX_Size() int {
+	return xxx_messageInfo_GetQueryBySpreadSheetRequest.Size(m)
 }
-func (m *GetSpreadSheetRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetSpreadSheetRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_GetSpreadSheetRequest proto.InternalMessageInfo
-
-type GetSpreadSheetResponce struct {
-	Res                  string                         `protobuf:"bytes,1,opt,name=res,proto3" json:"res,omitempty"`
-	Schema               *GetSpreadSheetResponce_Schema `protobuf:"bytes,5,opt,name=schema,proto3" json:"schema,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                       `json:"-"`
-	XXX_unrecognized     []byte                         `json:"-"`
-	XXX_sizecache        int32                          `json:"-"`
+func (m *GetQueryBySpreadSheetRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetQueryBySpreadSheetRequest.DiscardUnknown(m)
 }
 
-func (m *GetSpreadSheetResponce) Reset()         { *m = GetSpreadSheetResponce{} }
-func (m *GetSpreadSheetResponce) String() string { return proto.CompactTextString(m) }
-func (*GetSpreadSheetResponce) ProtoMessage()    {}
-func (*GetSpreadSheetResponce) Descriptor() ([]byte, []int) {
+var xxx_messageInfo_GetQueryBySpreadSheetRequest proto.InternalMessageInfo
+
+type GetQueryBySpreadSheetResponce struct {
+	Res                  string   `protobuf:"bytes,1,opt,name=res,proto3" json:"res,omitempty"`
+	Query                string   `protobuf:"bytes,2,opt,name=query,proto3" json:"query,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetQueryBySpreadSheetResponce) Reset()         { *m = GetQueryBySpreadSheetResponce{} }
+func (m *GetQueryBySpreadSheetResponce) String() string { return proto.CompactTextString(m) }
+func (*GetQueryBySpreadSheetResponce) ProtoMessage()    {}
+func (*GetQueryBySpreadSheetResponce) Descriptor() ([]byte, []int) {
 	return fileDescriptor_30f83ece174e3468, []int{1}
 }
 
-func (m *GetSpreadSheetResponce) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetSpreadSheetResponce.Unmarshal(m, b)
+func (m *GetQueryBySpreadSheetResponce) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetQueryBySpreadSheetResponce.Unmarshal(m, b)
 }
-func (m *GetSpreadSheetResponce) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetSpreadSheetResponce.Marshal(b, m, deterministic)
+func (m *GetQueryBySpreadSheetResponce) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetQueryBySpreadSheetResponce.Marshal(b, m, deterministic)
 }
-func (m *GetSpreadSheetResponce) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetSpreadSheetResponce.Merge(m, src)
+func (m *GetQueryBySpreadSheetResponce) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetQueryBySpreadSheetResponce.Merge(m, src)
 }
-func (m *GetSpreadSheetResponce) XXX_Size() int {
-	return xxx_messageInfo_GetSpreadSheetResponce.Size(m)
+func (m *GetQueryBySpreadSheetResponce) XXX_Size() int {
+	return xxx_messageInfo_GetQueryBySpreadSheetResponce.Size(m)
 }
-func (m *GetSpreadSheetResponce) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetSpreadSheetResponce.DiscardUnknown(m)
+func (m *GetQueryBySpreadSheetResponce) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetQueryBySpreadSheetResponce.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_GetSpreadSheetResponce proto.InternalMessageInfo
+var xxx_messageInfo_GetQueryBySpreadSheetResponce proto.InternalMessageInfo
 
-func (m *GetSpreadSheetResponce) GetRes() string {
+func (m *GetQueryBySpreadSheetResponce) GetRes() string {
 	if m != nil {
 		return m.Res
 	}
 	return ""
 }
 
-func (m *GetSpreadSheetResponce) GetSchema() *GetSpreadSheetResponce_Schema {
+func (m *GetQueryBySpreadSheetResponce) GetQuery() string {
 	if m != nil {
-		return m.Schema
-	}
-	return nil
-}
-
-type GetSpreadSheetResponce_Table struct {
-	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *GetSpreadSheetResponce_Table) Reset()         { *m = GetSpreadSheetResponce_Table{} }
-func (m *GetSpreadSheetResponce_Table) String() string { return proto.CompactTextString(m) }
-func (*GetSpreadSheetResponce_Table) ProtoMessage()    {}
-func (*GetSpreadSheetResponce_Table) Descriptor() ([]byte, []int) {
-	return fileDescriptor_30f83ece174e3468, []int{1, 0}
-}
-
-func (m *GetSpreadSheetResponce_Table) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetSpreadSheetResponce_Table.Unmarshal(m, b)
-}
-func (m *GetSpreadSheetResponce_Table) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetSpreadSheetResponce_Table.Marshal(b, m, deterministic)
-}
-func (m *GetSpreadSheetResponce_Table) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetSpreadSheetResponce_Table.Merge(m, src)
-}
-func (m *GetSpreadSheetResponce_Table) XXX_Size() int {
-	return xxx_messageInfo_GetSpreadSheetResponce_Table.Size(m)
-}
-func (m *GetSpreadSheetResponce_Table) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetSpreadSheetResponce_Table.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_GetSpreadSheetResponce_Table proto.InternalMessageInfo
-
-func (m *GetSpreadSheetResponce_Table) GetName() string {
-	if m != nil {
-		return m.Name
+		return m.Query
 	}
 	return ""
-}
-
-type GetSpreadSheetResponce_Rows struct {
-	Rows                 int32    `protobuf:"varint,1,opt,name=rows,proto3" json:"rows,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *GetSpreadSheetResponce_Rows) Reset()         { *m = GetSpreadSheetResponce_Rows{} }
-func (m *GetSpreadSheetResponce_Rows) String() string { return proto.CompactTextString(m) }
-func (*GetSpreadSheetResponce_Rows) ProtoMessage()    {}
-func (*GetSpreadSheetResponce_Rows) Descriptor() ([]byte, []int) {
-	return fileDescriptor_30f83ece174e3468, []int{1, 1}
-}
-
-func (m *GetSpreadSheetResponce_Rows) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetSpreadSheetResponce_Rows.Unmarshal(m, b)
-}
-func (m *GetSpreadSheetResponce_Rows) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetSpreadSheetResponce_Rows.Marshal(b, m, deterministic)
-}
-func (m *GetSpreadSheetResponce_Rows) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetSpreadSheetResponce_Rows.Merge(m, src)
-}
-func (m *GetSpreadSheetResponce_Rows) XXX_Size() int {
-	return xxx_messageInfo_GetSpreadSheetResponce_Rows.Size(m)
-}
-func (m *GetSpreadSheetResponce_Rows) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetSpreadSheetResponce_Rows.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_GetSpreadSheetResponce_Rows proto.InternalMessageInfo
-
-func (m *GetSpreadSheetResponce_Rows) GetRows() int32 {
-	if m != nil {
-		return m.Rows
-	}
-	return 0
-}
-
-type GetSpreadSheetResponce_Column struct {
-	Id                   string   `protobuf:"bytes,1,opt,name=Id,proto3" json:"Id,omitempty"`
-	LogicalName          string   `protobuf:"bytes,2,opt,name=LogicalName,proto3" json:"LogicalName,omitempty"`
-	PhysicalName         string   `protobuf:"bytes,3,opt,name=PhysicalName,proto3" json:"PhysicalName,omitempty"`
-	Type                 string   `protobuf:"bytes,4,opt,name=Type,proto3" json:"Type,omitempty"`
-	NullAble             string   `protobuf:"bytes,5,opt,name=NullAble,proto3" json:"NullAble,omitempty"`
-	PK                   string   `protobuf:"bytes,7,opt,name=PK,proto3" json:"PK,omitempty"`
-	Default              string   `protobuf:"bytes,8,opt,name=Default,proto3" json:"Default,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *GetSpreadSheetResponce_Column) Reset()         { *m = GetSpreadSheetResponce_Column{} }
-func (m *GetSpreadSheetResponce_Column) String() string { return proto.CompactTextString(m) }
-func (*GetSpreadSheetResponce_Column) ProtoMessage()    {}
-func (*GetSpreadSheetResponce_Column) Descriptor() ([]byte, []int) {
-	return fileDescriptor_30f83ece174e3468, []int{1, 2}
-}
-
-func (m *GetSpreadSheetResponce_Column) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetSpreadSheetResponce_Column.Unmarshal(m, b)
-}
-func (m *GetSpreadSheetResponce_Column) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetSpreadSheetResponce_Column.Marshal(b, m, deterministic)
-}
-func (m *GetSpreadSheetResponce_Column) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetSpreadSheetResponce_Column.Merge(m, src)
-}
-func (m *GetSpreadSheetResponce_Column) XXX_Size() int {
-	return xxx_messageInfo_GetSpreadSheetResponce_Column.Size(m)
-}
-func (m *GetSpreadSheetResponce_Column) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetSpreadSheetResponce_Column.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_GetSpreadSheetResponce_Column proto.InternalMessageInfo
-
-func (m *GetSpreadSheetResponce_Column) GetId() string {
-	if m != nil {
-		return m.Id
-	}
-	return ""
-}
-
-func (m *GetSpreadSheetResponce_Column) GetLogicalName() string {
-	if m != nil {
-		return m.LogicalName
-	}
-	return ""
-}
-
-func (m *GetSpreadSheetResponce_Column) GetPhysicalName() string {
-	if m != nil {
-		return m.PhysicalName
-	}
-	return ""
-}
-
-func (m *GetSpreadSheetResponce_Column) GetType() string {
-	if m != nil {
-		return m.Type
-	}
-	return ""
-}
-
-func (m *GetSpreadSheetResponce_Column) GetNullAble() string {
-	if m != nil {
-		return m.NullAble
-	}
-	return ""
-}
-
-func (m *GetSpreadSheetResponce_Column) GetPK() string {
-	if m != nil {
-		return m.PK
-	}
-	return ""
-}
-
-func (m *GetSpreadSheetResponce_Column) GetDefault() string {
-	if m != nil {
-		return m.Default
-	}
-	return ""
-}
-
-type GetSpreadSheetResponce_Schema struct {
-	Type                 *GetSpreadSheetResponce_Table            `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
-	Columns              map[int32]*GetSpreadSheetResponce_Column `protobuf:"bytes,2,rep,name=columns,proto3" json:"columns,omitempty" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	XXX_NoUnkeyedLiteral struct{}                                 `json:"-"`
-	XXX_unrecognized     []byte                                   `json:"-"`
-	XXX_sizecache        int32                                    `json:"-"`
-}
-
-func (m *GetSpreadSheetResponce_Schema) Reset()         { *m = GetSpreadSheetResponce_Schema{} }
-func (m *GetSpreadSheetResponce_Schema) String() string { return proto.CompactTextString(m) }
-func (*GetSpreadSheetResponce_Schema) ProtoMessage()    {}
-func (*GetSpreadSheetResponce_Schema) Descriptor() ([]byte, []int) {
-	return fileDescriptor_30f83ece174e3468, []int{1, 3}
-}
-
-func (m *GetSpreadSheetResponce_Schema) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetSpreadSheetResponce_Schema.Unmarshal(m, b)
-}
-func (m *GetSpreadSheetResponce_Schema) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetSpreadSheetResponce_Schema.Marshal(b, m, deterministic)
-}
-func (m *GetSpreadSheetResponce_Schema) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetSpreadSheetResponce_Schema.Merge(m, src)
-}
-func (m *GetSpreadSheetResponce_Schema) XXX_Size() int {
-	return xxx_messageInfo_GetSpreadSheetResponce_Schema.Size(m)
-}
-func (m *GetSpreadSheetResponce_Schema) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetSpreadSheetResponce_Schema.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_GetSpreadSheetResponce_Schema proto.InternalMessageInfo
-
-func (m *GetSpreadSheetResponce_Schema) GetType() *GetSpreadSheetResponce_Table {
-	if m != nil {
-		return m.Type
-	}
-	return nil
-}
-
-func (m *GetSpreadSheetResponce_Schema) GetColumns() map[int32]*GetSpreadSheetResponce_Column {
-	if m != nil {
-		return m.Columns
-	}
-	return nil
 }
 
 func init() {
-	proto.RegisterType((*GetSpreadSheetRequest)(nil), "gss.GetSpreadSheetRequest")
-	proto.RegisterType((*GetSpreadSheetResponce)(nil), "gss.GetSpreadSheetResponce")
-	proto.RegisterType((*GetSpreadSheetResponce_Table)(nil), "gss.GetSpreadSheetResponce.Table")
-	proto.RegisterType((*GetSpreadSheetResponce_Rows)(nil), "gss.GetSpreadSheetResponce.Rows")
-	proto.RegisterType((*GetSpreadSheetResponce_Column)(nil), "gss.GetSpreadSheetResponce.Column")
-	proto.RegisterType((*GetSpreadSheetResponce_Schema)(nil), "gss.GetSpreadSheetResponce.Schema")
-	proto.RegisterMapType((map[int32]*GetSpreadSheetResponce_Column)(nil), "gss.GetSpreadSheetResponce.Schema.ColumnsEntry")
+	proto.RegisterType((*GetQueryBySpreadSheetRequest)(nil), "gss.GetQueryBySpreadSheetRequest")
+	proto.RegisterType((*GetQueryBySpreadSheetResponce)(nil), "gss.GetQueryBySpreadSheetResponce")
 }
 
 func init() { proto.RegisterFile("gss.proto", fileDescriptor_30f83ece174e3468) }
 
 var fileDescriptor_30f83ece174e3468 = []byte{
-	// 380 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x52, 0xcd, 0x6a, 0xf2, 0x40,
-	0x14, 0x25, 0xbf, 0xea, 0x55, 0xe4, 0x63, 0xe0, 0xfb, 0xbe, 0x30, 0x6e, 0xd2, 0xac, 0x5c, 0xa5,
-	0x60, 0x29, 0x88, 0xbb, 0xd2, 0x16, 0x09, 0x16, 0x09, 0xa3, 0xeb, 0x42, 0x8c, 0x53, 0x2d, 0x1d,
-	0x93, 0x34, 0x93, 0x54, 0xf2, 0x66, 0x7d, 0x83, 0xbe, 0x4b, 0x9f, 0xa2, 0xcc, 0x4c, 0x14, 0x2d,
-	0xa2, 0xbb, 0x33, 0xf7, 0xde, 0x73, 0xce, 0x9d, 0x33, 0x03, 0xad, 0x15, 0xe7, 0x7e, 0x96, 0xa7,
-	0x45, 0x8a, 0x8c, 0x15, 0xe7, 0xde, 0x7f, 0xf8, 0x3b, 0xa6, 0xc5, 0x2c, 0xcb, 0x69, 0xb4, 0x9c,
-	0xad, 0x29, 0x2d, 0x08, 0x7d, 0x2f, 0x29, 0x2f, 0xbc, 0x2f, 0x13, 0xfe, 0xfd, 0xee, 0xf0, 0x2c,
-	0x4d, 0x62, 0x8a, 0xfe, 0x80, 0x91, 0x53, 0xee, 0x68, 0xae, 0xd6, 0x6f, 0x11, 0x01, 0xd1, 0x08,
-	0x6c, 0x1e, 0xaf, 0xe9, 0x26, 0x72, 0x2c, 0x57, 0xeb, 0xb7, 0x07, 0x9e, 0x2f, 0x6c, 0x4e, 0xd3,
-	0xfd, 0x99, 0x9c, 0x24, 0x35, 0x03, 0xf7, 0xc0, 0x9a, 0x47, 0x0b, 0x46, 0x11, 0x02, 0x33, 0x89,
-	0x36, 0xb4, 0xd6, 0x95, 0x18, 0x63, 0x30, 0x49, 0xba, 0xe5, 0xa2, 0x97, 0xa7, 0x5b, 0xe5, 0x69,
-	0x11, 0x89, 0xf1, 0xa7, 0x06, 0xf6, 0x7d, 0xca, 0xca, 0x4d, 0x82, 0xba, 0xa0, 0x07, 0xcb, 0x9a,
-	0xa8, 0x07, 0x4b, 0xe4, 0x42, 0xfb, 0x29, 0x5d, 0xbd, 0xc6, 0x11, 0x9b, 0x0a, 0x45, 0x5d, 0x36,
-	0x0e, 0x4b, 0xc8, 0x83, 0x4e, 0xb8, 0xae, 0xf8, 0x7e, 0xc4, 0x90, 0x23, 0x47, 0x35, 0x61, 0x3a,
-	0xaf, 0x32, 0xea, 0x98, 0x6a, 0x21, 0x81, 0x11, 0x86, 0xe6, 0xb4, 0x64, 0xec, 0x6e, 0xc1, 0xa8,
-	0xbc, 0x6b, 0x8b, 0xec, 0xcf, 0x62, 0x8b, 0x70, 0xe2, 0x34, 0xd4, 0x16, 0xe1, 0x04, 0x39, 0xd0,
-	0x78, 0xa0, 0x2f, 0x51, 0xc9, 0x0a, 0xa7, 0x29, 0x8b, 0xbb, 0x23, 0xfe, 0xd6, 0xc0, 0x56, 0x31,
-	0xa0, 0x5b, 0x30, 0x0b, 0x61, 0xa2, 0xc9, 0xe0, 0xae, 0xce, 0x05, 0x27, 0x63, 0x22, 0x72, 0x1c,
-	0x05, 0xd0, 0x88, 0xe5, 0xdd, 0xb9, 0xa3, 0xbb, 0x46, 0xbf, 0x3d, 0xb8, 0xbe, 0x1c, 0xb9, 0xaf,
-	0xd2, 0xe2, 0x8f, 0x49, 0x91, 0x57, 0x64, 0xc7, 0xc7, 0xcf, 0xd0, 0x39, 0x6c, 0x88, 0xe7, 0x7d,
-	0xa3, 0x55, 0x1d, 0xb5, 0x80, 0x68, 0x08, 0xd6, 0x47, 0xc4, 0x4a, 0x15, 0xe4, 0x85, 0xd7, 0x55,
-	0x52, 0x44, 0x11, 0x46, 0xfa, 0x50, 0x1b, 0x84, 0x60, 0x8c, 0x39, 0x47, 0x01, 0x74, 0x8f, 0x29,
-	0x08, 0x9f, 0xd4, 0x91, 0xdf, 0x0f, 0xf7, 0xce, 0x78, 0x2c, 0x6c, 0xf9, 0x81, 0x6f, 0x7e, 0x02,
-	0x00, 0x00, 0xff, 0xff, 0x53, 0x9e, 0x60, 0x23, 0xcd, 0x02, 0x00, 0x00,
+	// 145 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x4c, 0x2f, 0x2e, 0xd6,
+	0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x4e, 0x2f, 0x2e, 0x56, 0x92, 0xe3, 0x92, 0x71, 0x4f,
+	0x2d, 0x09, 0x2c, 0x4d, 0x2d, 0xaa, 0x74, 0xaa, 0x0c, 0x2e, 0x28, 0x4a, 0x4d, 0x4c, 0x09, 0xce,
+	0x48, 0x4d, 0x2d, 0x09, 0x4a, 0x2d, 0x2c, 0x4d, 0x2d, 0x2e, 0x51, 0x72, 0xe7, 0x92, 0xc5, 0x21,
+	0x5f, 0x5c, 0x90, 0x9f, 0x97, 0x9c, 0x2a, 0x24, 0xc0, 0xc5, 0x5c, 0x94, 0x5a, 0x2c, 0xc1, 0xa8,
+	0xc0, 0xa8, 0xc1, 0x19, 0x04, 0x62, 0x0a, 0x89, 0x70, 0xb1, 0x16, 0x82, 0xd4, 0x4b, 0x30, 0x81,
+	0xc5, 0x20, 0x1c, 0xa3, 0x54, 0x2e, 0x66, 0xf7, 0xe2, 0x62, 0xa1, 0x38, 0x2e, 0x51, 0xac, 0xe6,
+	0x09, 0x29, 0xea, 0x81, 0x5c, 0x86, 0xcf, 0x2d, 0x52, 0x4a, 0xf8, 0x94, 0x40, 0x9c, 0x93, 0xc4,
+	0x06, 0xf6, 0x9b, 0x31, 0x20, 0x00, 0x00, 0xff, 0xff, 0x69, 0xaa, 0x9e, 0x75, 0xe8, 0x00, 0x00,
+	0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -366,7 +136,7 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type GssClient interface {
-	GetSpreadSheet(ctx context.Context, in *GetSpreadSheetRequest, opts ...grpc.CallOption) (*GetSpreadSheetResponce, error)
+	GetQueryBySpreadSheet(ctx context.Context, in *GetQueryBySpreadSheetRequest, opts ...grpc.CallOption) (*GetQueryBySpreadSheetResponce, error)
 }
 
 type gssClient struct {
@@ -377,9 +147,9 @@ func NewGssClient(cc *grpc.ClientConn) GssClient {
 	return &gssClient{cc}
 }
 
-func (c *gssClient) GetSpreadSheet(ctx context.Context, in *GetSpreadSheetRequest, opts ...grpc.CallOption) (*GetSpreadSheetResponce, error) {
-	out := new(GetSpreadSheetResponce)
-	err := c.cc.Invoke(ctx, "/gss.Gss/GetSpreadSheet", in, out, opts...)
+func (c *gssClient) GetQueryBySpreadSheet(ctx context.Context, in *GetQueryBySpreadSheetRequest, opts ...grpc.CallOption) (*GetQueryBySpreadSheetResponce, error) {
+	out := new(GetQueryBySpreadSheetResponce)
+	err := c.cc.Invoke(ctx, "/gss.Gss/GetQueryBySpreadSheet", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -388,35 +158,35 @@ func (c *gssClient) GetSpreadSheet(ctx context.Context, in *GetSpreadSheetReques
 
 // GssServer is the server API for Gss service.
 type GssServer interface {
-	GetSpreadSheet(context.Context, *GetSpreadSheetRequest) (*GetSpreadSheetResponce, error)
+	GetQueryBySpreadSheet(context.Context, *GetQueryBySpreadSheetRequest) (*GetQueryBySpreadSheetResponce, error)
 }
 
 // UnimplementedGssServer can be embedded to have forward compatible implementations.
 type UnimplementedGssServer struct {
 }
 
-func (*UnimplementedGssServer) GetSpreadSheet(ctx context.Context, req *GetSpreadSheetRequest) (*GetSpreadSheetResponce, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetSpreadSheet not implemented")
+func (*UnimplementedGssServer) GetQueryBySpreadSheet(ctx context.Context, req *GetQueryBySpreadSheetRequest) (*GetQueryBySpreadSheetResponce, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetQueryBySpreadSheet not implemented")
 }
 
 func RegisterGssServer(s *grpc.Server, srv GssServer) {
 	s.RegisterService(&_Gss_serviceDesc, srv)
 }
 
-func _Gss_GetSpreadSheet_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetSpreadSheetRequest)
+func _Gss_GetQueryBySpreadSheet_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetQueryBySpreadSheetRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(GssServer).GetSpreadSheet(ctx, in)
+		return srv.(GssServer).GetQueryBySpreadSheet(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/gss.Gss/GetSpreadSheet",
+		FullMethod: "/gss.Gss/GetQueryBySpreadSheet",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GssServer).GetSpreadSheet(ctx, req.(*GetSpreadSheetRequest))
+		return srv.(GssServer).GetQueryBySpreadSheet(ctx, req.(*GetQueryBySpreadSheetRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -426,8 +196,8 @@ var _Gss_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*GssServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetSpreadSheet",
-			Handler:    _Gss_GetSpreadSheet_Handler,
+			MethodName: "GetQueryBySpreadSheet",
+			Handler:    _Gss_GetQueryBySpreadSheet_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

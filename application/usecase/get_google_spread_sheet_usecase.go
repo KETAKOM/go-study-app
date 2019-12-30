@@ -1,9 +1,6 @@
 package usecase
 
 import (
-	"fmt"
-
-	pb "github.com/KETAKOM/go-study-app/api/gss"
 	"github.com/KETAKOM/go-study-app/application/config"
 	"github.com/yokoe/herschel"
 	"github.com/yokoe/herschel/option"
@@ -39,26 +36,4 @@ func (g *GetGoogleSpreadSheetUsecase) GetAccountCredentials() (*herschel.Client,
 		return nil, err
 	}
 	return client, err
-}
-
-func Convater(t *herschel.Table) (*pb.GetSpreadSheetResponce_Schema, error) {
-
-	var r *pb.GetSpreadSheetResponce_Schema
-
-	rows := t.GetRows()
-	fmt.Println(r.Columns)
-
-	for i := 2; i < rows; i++ {
-
-		// r.Columns[int32(i)].Id = t.GetStringValue(i, 0)
-		// fmt.Println(r.Columns[int32(i)].Id)
-		// r.Columns[int32(i)].LogicalName = t.GetStringValue(i, 1)
-		// r.Columns[int32(i)].PhysicalName = t.GetStringValue(i, 2)
-		// r.Columns[int32(i)].Type = t.GetStringValue(i, 3)
-		// r.Columns[int32(i)].NullAble = t.GetStringValue(i, 4)
-		// r.Columns[int32(i)].PK = t.GetStringValue(i, 5)
-		// r.Columns[int32(i)].Default = t.GetStringValue(i, 6)
-	}
-
-	return r, nil
 }

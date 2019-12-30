@@ -16,12 +16,13 @@ func main() {
 	conn, err := grpc.Dial(address, grpc.WithInsecure())
 	c := pb.NewGssClient(conn)
 
-	s := pb.GetSpreadSheetRequest{}
-	r, err := c.GetSpreadSheet(ctx, &s)
+	s := pb.GetQueryBySpreadSheetRequest{}
+	r, err := c.GetQueryBySpreadSheet(ctx, &s)
 	if err != nil {
 		fmt.Println("error GetSpreadSheet: ", err)
 		return
 	}
 
 	fmt.Println(r.Res)
+	fmt.Println(r.Query)
 }
