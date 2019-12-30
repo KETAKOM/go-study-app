@@ -4,11 +4,20 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/KETAKOM/go-study-app/application/config"
+	"github.com/KETAKOM/go-study-app/application/domain/model"
+	uc "github.com/KETAKOM/go-study-app/application/usecase"
 	"github.com/yokoe/herschel"
 	"github.com/yokoe/herschel/option"
 )
 
 func main() {
+	config, err := config.LoadConfig()
+	if err != nil {
+		fmt.Println("LoadConfig Failed", err)
+	}
+	fmt.Println(config)
+
 	dir := os.Getenv("JSON_DIR")
 	op := option.WithServiceAccountCredentials(dir)
 	client, err := herschel.NewClient(op)
@@ -25,48 +34,11 @@ func main() {
 		return
 	}
 
-	rows := table.GetRows()
+	usecase := uc.NewCreateSQLUseCase()
+	usecase.SchemaRepository = &model.Schema{}
+	usecase.SQLRepository = &model.SQL{}
 
-	var ts []*Schema
-	for i := 1; i < rows; i++ {
-		var r Schema
-		r.ID = table.GetStringValue(i, 0)
-		r.LogicalName = table.GetStringValue(i, 1)
-		r.PhysicalName = table.GetStringValue(i, 2)
-		r.Type = table.GetStringValue(i, 3)
-		r.NullAble = table.GetStringValue(i, 4)
-		r.PK = table.GetStringValue(i, 5)
-		r.Default = table.GetStringValue(i, 6)
+	var sql = usecase.CreateSQL(table)
 
-		ts = append(ts, &r)
-	}
-
-	var sql string
-
-	sql = "create table aaaa ("
-
-	i := len(ts) - 1
-	for s, t := range ts {
-		if s != 0 {
-			sql += t.LogicalName + " "
-			sql += t.Type
-
-			if s < i {
-				sql += ", "
-			}
-		}
-	}
-	sql += ");"
-
-	fmt.Println(sql)
-}
-
-type Schema struct {
-	ID           string
-	LogicalName  string
-	PhysicalName string
-	Type         string
-	NullAble     string
-	PK           string
-	Default      string
+	fmt.Println(sql.Query)
 }
