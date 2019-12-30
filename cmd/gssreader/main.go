@@ -6,8 +6,6 @@ import (
 	"github.com/KETAKOM/go-study-app/application/config"
 	"github.com/KETAKOM/go-study-app/application/domain/model"
 	uc "github.com/KETAKOM/go-study-app/application/usecase"
-	"github.com/yokoe/herschel"
-	"github.com/yokoe/herschel/option"
 )
 
 func main() {
@@ -16,20 +14,14 @@ func main() {
 		fmt.Println("LoadConfig Failed", err)
 	}
 
-	op := option.WithServiceAccountCredentials(config.GoogleSpreadSheet.AUTH_DIR)
-	client, err := herschel.NewClient(op)
+	acuc := uc.NewGetAccountCredentials(config)
+	client, err := acuc.GetAccountCredentials()
 	if err != nil {
-		fmt.Println(err)
-		return
+		fmt.Println("GetccountCredentials Failed", err)
 	}
-
-	table, err := client.ReadTable(
-		config.GoogleSpreadSheet.SHEET_ID,
-		config.GoogleSpreadSheet.SHEET_NAME,
-	)
+	table, err := acuc.ReadTable(client)
 	if err != nil {
-		fmt.Println(err)
-		return
+		fmt.Println("ReadTable Failed", err)
 	}
 
 	usecase := uc.NewCreateSQLUseCase()
