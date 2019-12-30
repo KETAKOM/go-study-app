@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"os"
 
 	"github.com/KETAKOM/go-study-app/application/config"
 	"github.com/KETAKOM/go-study-app/application/domain/model"
@@ -16,19 +15,18 @@ func main() {
 	if err != nil {
 		fmt.Println("LoadConfig Failed", err)
 	}
-	fmt.Println(config)
 
-	dir := os.Getenv("JSON_DIR")
-	op := option.WithServiceAccountCredentials(dir)
+	op := option.WithServiceAccountCredentials(config.GoogleSpreadSheet.AUTH_DIR)
 	client, err := herschel.NewClient(op)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	id := os.Getenv("SHEET_ID")
-	name := os.Getenv("SHEET_NAME")
 
-	table, err := client.ReadTable(id, name)
+	table, err := client.ReadTable(
+		config.GoogleSpreadSheet.SHEET_ID,
+		config.GoogleSpreadSheet.SHEET_NAME,
+	)
 	if err != nil {
 		fmt.Println(err)
 		return
