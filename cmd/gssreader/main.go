@@ -3,22 +3,39 @@ package main
 import (
 	"fmt"
 
-	"github.com/KETAKOM/go-study-app/application/config"
-	"github.com/KETAKOM/go-study-app/application/domain/model"
-	uc "github.com/KETAKOM/go-study-app/application/usecase"
+	"context"
+
+	pbc "github.com/KETAKOM/go-study-app/api/cque"
+	pbg "github.com/KETAKOM/go-study-app/api/gss"
+	"google.golang.org/grpc"
 )
 
 func main() {
-	config, err := config.LoadConfig()
+	address := "localhost:1111"
+	// Set up a connection to the server.
+	ctx := context.Background()
+	conn, err := grpc.Dial(address, grpc.WithInsecure())
+	c := pbg.NewGssClient(conn)
+
+	s := pbg.GetQueryBySpreadSheetRequest{}
+	r, err := c.GetQueryBySpreadSheet(ctx, &s)
 	if err != nil {
-		fmt.Println("LoadConfig Failed", err)
+		fmt.Println("error GetSpreadSheet: ", err)
+		return
 	}
 
-	usecase := uc.NewCreateSQLUseCase()
-	usecase.SchemaRepository = &model.Schema{}
-	usecase.SQLRepository = &model.SQL{}
+	address = "localhost:1122"
+	// Set up a connection to the server.
+	ctx = context.Background()
+	conn, err = grpc.Dial(address, grpc.WithInsecure())
+	cc := pbc.NewCuqeClient(conn)
 
-	var sql = usecase.CreateSQL(table)
-
-	fmt.Println(sql.Query)
+	ss := pbc.GetFileRequest{
+		Query: r.Query,
+	}
+	_, err = cc.GetFile(ctx, &ss)
+	if err != nil {
+		fmt.Println("error GetSpreadSheet: ", err)
+		return
+	}
 }
