@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package cque;
+
+service Cuqe {
+    rpc GetFile (GetFileRequest) returns (GetFileResponce);
+}
+
+message GetFileRequest {
+    string query = 1;
+}
+
+message GetFileResponce {
+    string result = 1;
+}
