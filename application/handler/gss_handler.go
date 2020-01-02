@@ -32,7 +32,13 @@ func (gh *GssHandler) GetQueryBySpreadSheet(
 	queryUsecase.SchemaRepository = &model.Schema{}
 	queryUsecase.SQLRepository = &model.SQL{}
 
-	var sql = queryUsecase.CreateSQL(table)
+	sql, err := queryUsecase.CreateSQL(table)
+	if err != nil {
+		return &pb.GetQueryBySpreadSheetResponce{
+			Res:   "Failed",
+			Query: "",
+		}, err
+	}
 
 	return &pb.GetQueryBySpreadSheetResponce{
 		Res:   "OK",

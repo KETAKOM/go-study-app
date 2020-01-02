@@ -5,5 +5,5 @@ import (
 )
 
 type SchemaRepository interface {
-	GetSchema(table *herschel.Table) []*Schema
+	GetSchema(table *herschel.Table) ([]*Schema, error)
 }

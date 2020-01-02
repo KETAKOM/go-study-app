@@ -1,6 +1,9 @@
 package model
 
 import (
+	"errors"
+
+	"github.com/KETAKOM/go-study-app/application/domain/model/schema"
 	"github.com/yokoe/herschel"
 )
 
@@ -18,10 +21,10 @@ type Schema struct {
 	Default      string
 }
 
-func (*Schema) GetSchema(table *herschel.Table) []*Schema {
+func (*Schema) GetSchema(table *herschel.Table) ([]*Schema, error) {
 	var ts []*Schema
 	rows := table.GetRows()
-	for i := 1; i < rows; i++ {
+	for i := 2; i < rows; i++ {
 		var r Schema
 		r.ID = table.GetStringValue(i, 0)
 		r.LogicalName = table.GetStringValue(i, 1)
@@ -31,7 +34,11 @@ func (*Schema) GetSchema(table *herschel.Table) []*Schema {
 		r.PK = table.GetStringValue(i, 5)
 		r.Default = table.GetStringValue(i, 6)
 
+		if !schema.ValidateType(r.Type) {
+			return []*Schema{}, errors.New("validate failed")
+		}
+
 		ts = append(ts, &r)
 	}
-	return ts
+	return ts, nil
 }

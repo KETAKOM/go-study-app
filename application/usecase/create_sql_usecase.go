@@ -14,7 +14,13 @@ func NewCreateSQLUseCase() *CreateSQLUseCase {
 	return &CreateSQLUseCase{}
 }
 
-func (uc *CreateSQLUseCase) CreateSQL(table *herschel.Table) *model.SQL {
-	schama := uc.SchemaRepository.GetSchema(table)
-	return uc.SQLRepository.GetSQL(schama)
+func (uc *CreateSQLUseCase) CreateSQL(table *herschel.Table) (*model.SQL, error) {
+	schama, err := uc.SchemaRepository.GetSchema(table)
+	if err != nil {
+		return nil, err
+	}
+
+	sql := uc.SQLRepository.GetSQL(schama)
+
+	return sql, nil
 }
